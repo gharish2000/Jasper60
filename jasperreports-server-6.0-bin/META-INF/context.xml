@@ -1,0 +1,45 @@
+<Context path="/jasperserver-pro" reloadable="false">
+            
+        <!-- maxActive: Maximum number of dB connections in pool. Make sure you
+             configure your mysqld max_connections large enough to handle
+             all of your db connections. Set to 0 for no limit.
+        -->
+        <!-- maxIdle: Maximum number of idle dB connections to retain in pool.
+             Set to -1 for no limit.  See also the DBCP documentation on this
+             and the minEvictableIdleTimeMillis configuration parameter.
+         -->
+        <!-- maxWait: Maximum time to wait for a dB connection to become available
+             in ms, in this example 10 seconds. An Exception is thrown if
+             this timeout is exceeded.  Set to -1 to wait indefinitely.
+        -->
+        
+    <Resource name="jdbc/jasperserver" auth="Container" type="javax.sql.DataSource"
+        maxActive="100" maxIdle="30" maxWait="10000"
+        username="postgres" password="postgres"
+        driverClassName="org.postgresql.Driver"
+        validationQuery="select 1"
+        testOnBorrow="true"
+        factory="${tomcatBasicDatasourceFactory}"
+        url="jdbc:postgresql://localhost:5432/jasperserver"  />
+
+    <Resource name="jdbc/sugarcrm" auth="Container" type="javax.sql.DataSource"
+        maxActive="100" maxIdle="30" maxWait="10000"
+        username="postgres" password="postgres"
+        driverClassName="org.postgresql.Driver"
+        validationQuery="select 1"
+        testOnBorrow="true"
+        factory="${tomcatBasicDatasourceFactory}"
+        url="jdbc:postgresql://localhost:5432/sugarcrm"  />
+
+    <Resource name="jdbc/foodmart" auth="Container" type="javax.sql.DataSource"
+        maxActive="100" maxIdle="30" maxWait="10000"
+        username="postgres" password="postgres"
+        driverClassName="org.postgresql.Driver"
+        validationQuery="select 1"
+        testOnBorrow="true"
+        factory="${tomcatBasicDatasourceFactory}"
+        url="jdbc:postgresql://localhost:5432/foodmart"  />
+		
+    <!-- Comment this line to enable session persistence across Tomcat restarts -->
+    <Manager pathname="" />
+</Context>
